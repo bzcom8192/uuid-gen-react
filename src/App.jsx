@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   const [uuid, setUuid] = useState([]);
   const [number, setNumber] = useState(1);
-  const [copied, setCopied] = useState(null);
+  const [copied, setCopied] = useState([]);
 
   const gen_uuid = (number) => {
     const uuids = [];
@@ -15,10 +15,7 @@ function App() {
   }
 
   const copyToClipboard = (id) => {
-    setCopied(id);
-    setTimeout(() => {
-      setCopied(null);
-    }, 5000);
+    setCopied((prev) => ([...prev, id]));
   }
 
   return (
@@ -46,13 +43,13 @@ function App() {
                 <tr key={index}>
                   <td className='w-full px-4 py-2 border-b border-gray-600'>{id}</td>
                   <td className='w-full flex justify-end px-4 py-2 border-b border-gray-600'>
-                    <button className='bg-green-500 rounded px-2 py-1'
+                    <button className='bg-green-500 rounded px-2 py-1 cursor-pointer'
                       onClick={() => {
                         navigator.clipboard.writeText(id);
                         copyToClipboard(index);
                       }}
                     >
-                      {copied === index ? 'Copied!' : 'Copy'}
+                      {copied.includes(index) ? 'Copied!' : 'Copy'}
                     </button>
                   </td>
                 </tr>
