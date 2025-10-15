@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css'
 
 function App() {
   const [uuid, setUuid] = useState([]);
   const [number, setNumber] = useState(1);
   const [copied, setCopied] = useState([]);
+  const ready = useRef(null);
 
   const gen_uuid = (number) => {
     const uuids = [];
@@ -18,8 +19,23 @@ function App() {
     setCopied((prev) => ([...prev, id]));
   }
 
+  useEffect(() => {
+    if (!ready.current) {
+      ready.current = true;
+      gen_uuid(10);
+      return;
+    }
+  }, []);
+
+
   return (
-    <div className='w-screen h-screen bg-black'>
+    <div className='w-screen h-screen bg-black'
+      onKeyDown={(e) => {
+        if (e.key == "Enter") {
+          gen_uuid(number);
+        }
+      }}
+    >
       <div className='w-full h-full flex flex-col items-center gap-5 text-white px-5'>
         <div className='text-2xl'>UUID Generator</div>
         <div className='flex items-center'>
@@ -46,10 +62,10 @@ function App() {
                     <button className='bg-green-500 rounded px-2 py-1 cursor-pointer'
                       onClick={() => {
                         navigator.clipboard.writeText(id);
-                        copyToClipboard(index);
+                        copyToClipboard(id);
                       }}
                     >
-                      {copied.includes(index) ? 'Copied!' : 'Copy'}
+                      {copied.includes(id) ? 'Copied!' : 'Copy'}
                     </button>
                   </td>
                 </tr>
