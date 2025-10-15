@@ -10,10 +10,6 @@ export default {
         'none': 'none',
       },
       colors: {
-        "temp-light": "#1f75fe",
-        "temp-dark": "#0018a8",
-        "link-online": "#4caf50",
-        "link-offline": "#f44235",
         "transparent": "transparent",
         "black": "#000000",
         "white": "#ffffff",
