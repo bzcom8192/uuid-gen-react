@@ -125,6 +125,8 @@ function App() {
     document.title = tabs.find(tab => tab.id === activeTab)?.label;
   }, [activeTab]);
 
+  const [showWithNewLine, setShowWithNewLine] = useState(false);
+
   return (
     <div className="w-screen h-screen bg-black overflow-y-auto">
       <div className="w-full h-full flex flex-col items-center gap-5 text-white px-5">
@@ -341,14 +343,24 @@ function App() {
             <div className="w-full max-w-2xl bg-gray-800 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Private Key</h3>
               <pre className="bg-gray-700 p-4 rounded text-sm overflow-auto slim-scrollbar">
-                {keys.privateKey}
+                {showWithNewLine ? keys.privateKey : keys.privateKey.replaceAll("\n", "\\n")}
               </pre>
               <h3 className="text-xl font-semibold mt-6 mb-4">Public Key</h3>
               <pre className="bg-gray-700 p-4 rounded text-sm overflow-auto slim-scrollbar">
-                {keys.publicKey}
+                {showWithNewLine ? keys.publicKey : keys.publicKey.replaceAll("\n", "\\n")}
               </pre>
             </div>
             <div className="w-full max-w-2xl flex justify-end gap-4">
+              <div className="flex items-center gap-4">
+                <input
+                  id="id_showWithNewLine"
+                  type="checkbox"
+                  className="w-6 h-6"
+                  onChange={e => setShowWithNewLine(e.target.checked)}
+                  value={showWithNewLine}
+                />
+                <label htmlFor="id_showWithNewLine">Show with new lines</label>
+              </div>
               <button
                 className="bg-green-500 rounded px-4 py-2 font-semibold hover:bg-green-600 transition"
                 onClick={() => {
