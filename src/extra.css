@@ -19,3 +19,17 @@ mark.m{background:var(--accent);color:var(--ink);border-radius:2px}
 .big{font-size:18px}
 .cron{font-size:20px;letter-spacing:.04em}
 @media (max-width:860px){.two{grid-template-columns:1fr}}
+
+/* scroll-fix */
+textarea{overflow:auto}
+.out textarea{max-height:55vh}
+.keybox textarea{height:220px;max-height:none;white-space:pre;overflow:auto;overflow-wrap:normal;word-break:normal}
+.two{align-items:start}
+
+/* layout-fix: app frame is fixed to the viewport, only .content scrolls */
+html,body,#root{height:100%;overflow:hidden}
+.shell{height:100vh;height:100dvh;overflow:hidden;grid-template-rows:minmax(0,1fr)}
+.side{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.main{min-height:0;height:100%;overflow:hidden}
+.top{flex:none}
+.content{min-height:0;flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain}
