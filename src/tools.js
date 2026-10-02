@@ -1,0 +1,21 @@
+export const GROUPS = ['Generate', 'Inspect', 'Convert', 'Text', 'Reference']
+export const TOOLS = [
+  { path: '/', name: 'UUID & ID Generator', glyph: 'ID', group: 'Generate', kw: 'uuid guid v1 v3 v4 v5 v7 ulid nanoid objectid bulk', load: () => import('./pages/UuidPage.jsx') },
+  { path: '/secrets', name: 'Passwords & Tokens', glyph: '**', group: 'Generate', kw: 'password secret token api key random hex base64 entropy', load: () => import('./pages/SecretPage.jsx') },
+  { path: '/sslgen', name: 'SSL Generator', glyph: 'GEN', group: 'Generate', kw: 'ssl tls certificate generate self-signed csr ca root localhost mkcert openssl key pem san wildcard', load: () => import('./pages/GenPage.jsx') },
+  { path: '/inspect', name: 'ID Inspector', glyph: '?!', group: 'Inspect', kw: 'validate parse version variant timestamp uuid ulid objectid', load: () => import('./pages/InspectPage.jsx') },
+  { path: '/hash', name: 'Hash & HMAC', glyph: '#', group: 'Inspect', kw: 'md5 sha1 sha256 sha512 checksum hmac file', load: () => import('./pages/HashPage.jsx') },
+  { path: '/jwt', name: 'JWT Debugger', glyph: 'JWT', group: 'Inspect', kw: 'jwt token bearer decode encode sign verify hs256 rs256 es256 claims exp', load: () => import('./pages/JwtPage.jsx') },
+  { path: '/ssl', name: 'SSL / PEM Decoder', glyph: 'TLS', group: 'Inspect', kw: 'ssl tls certificate cert pem key csr x509 chain expiry san env fullchain privkey crt', load: () => import('./pages/SslPage.jsx') },
+  { path: '/url', name: 'URL Parser', glyph: 'URL', group: 'Inspect', kw: 'url query string params host port path encode', load: () => import('./pages/UrlPage.jsx') },
+  { path: '/encode', name: 'Encode / Decode', glyph: '64', group: 'Convert', kw: 'base64 url html hex unicode escape', load: () => import('./pages/EncodePage.jsx') },
+  { path: '/json', name: 'JSON Toolkit', glyph: '{}', group: 'Convert', kw: 'json format minify sort typescript csv yaml escape', load: () => import('./pages/JsonPage.jsx') },
+  { path: '/time', name: 'Timestamp', glyph: 'T', group: 'Convert', kw: 'unix epoch date time timezone iso relative', load: () => import('./pages/TimePage.jsx') },
+  { path: '/color', name: 'Color Converter', glyph: 'RGB', group: 'Convert', kw: 'color hex rgb hsl hsv oklch contrast wcag shades palette', load: () => import('./pages/ColorPage.jsx') },
+  { path: '/num', name: 'Numbers & chmod', glyph: '0x', group: 'Convert', kw: 'base binary hex octal decimal bigint bytes kb mb gib chmod permission unix', load: () => import('./pages/NumPage.jsx') },
+  { path: '/regex', name: 'Regex Tester', glyph: '.*', group: 'Text', kw: 'regex regexp match groups replace flags test', load: () => import('./pages/RegexPage.jsx') },
+  { path: '/diff', name: 'Text Diff', glyph: '+-', group: 'Text', kw: 'diff compare lines words changes', load: () => import('./pages/DiffPage.jsx') },
+  { path: '/case', name: 'Case & Text Tools', glyph: 'Aa', group: 'Text', kw: 'camel snake kebab pascal case slug sort unique lines count', load: () => import('./pages/CasePage.jsx') },
+  { path: '/cron', name: 'Cron Explainer', glyph: '*/', group: 'Text', kw: 'cron schedule crontab next run explain', load: () => import('./pages/CronPage.jsx') },
+  { path: '/ref', name: 'Reference', glyph: 'RF', group: 'Reference', kw: 'http status code ports mime content-type cheat sheet', load: () => import('./pages/RefPage.jsx') },
+]
